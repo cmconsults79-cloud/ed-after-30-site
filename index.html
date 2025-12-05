@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ED After 30 – Evidence-Based Education for Men’s Sexual Health</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Educational hub for men 30+ who want clear, evidence-based guidance on erectile dysfunction. Learn, reflect, and prepare for better conversations with your clinician. Join the early-access list for upcoming tools and resources." />
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-soft: #fafafa;
+      --fg: #111827;
+      --muted: #6b7280;
+      --accent: #111827;
+      --accent-soft: #e5f0ff;
+      --accent-pill: #111827;
+      --accent-text: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* NAVBAR */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(245, 245, 247, 0.95);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      background: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--fg);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.6rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: transform 0.08s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent-pill);
+      color: var(--accent-text);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.36);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: #ffffff;
+    }
+
+    /* HERO */
+
+    main {
+      padding: 2.4rem 0 4rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.8rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--accent-soft);
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #10b981;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 4vw, 3rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      max-width: 32rem;
+    }
+
+    .hero-email {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-email input[type="email"] {
+      flex: 1 1 210px;
+      min-width: 0;
+      padding: 0.6rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.92rem;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .hero-email input[type="email"]:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px #2563eb22;
+    }
+
+    .hero-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .hero-right {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right::before {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      opacity: 0.7;
+    }
+
+    .hero-right-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-right h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #f3f4f6;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .pill-strong {
+      background: var(--accent-pill);
+      color: var(--accent-text);
+    }
+
+    .hero-right ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0.5rem 0 0.8rem;
+    }
+
+    .hero-right li {
+      margin-bottom: 0.35rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .hero-right li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.7rem;
+      color: #16a34a;
+    }
+
+    .hero-tagline {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* TRUST STRIP */
+
+    .trust-strip {
+      padding: 0.9rem 0 1.8rem;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .trust-pill {
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+    }
+
+    /* GENERIC SECTION */
+
+    .section {
+      padding: 2.4rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .section-header span {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .section-header h2 {
+      font-size: 1.5rem;
+    }
+
+    .section-header p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    /* HOW IT WORKS (EDUCATION FLOW) */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.3rem;
+      border: 1px solid var(--border);
+    }
+
+    .step-number {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+    }
+
+    .step-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* WHAT YOU WILL LEARN */
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.2rem;
+      border: 1px solid var(--border);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.2rem;
+    }
+
+    .chip {
+      font-size: 0.76rem;
+      padding: 0.14rem 0.55rem;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: var(--muted);
+    }
+
+    /* COMING SOON / LIMITED EARLY ACCESS */
+
+    .coming-soon {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: center;
+      background: #000000;
+      color: #f9fafb;
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 1.9rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .coming-soon h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .coming-soon p {
+      font-size: 0.93rem;
+      color: #e5e7eb;
+      margin-bottom: 1rem;
+    }
+
+    .coming-tag {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #a5b4fc;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .coming-list {
+      font-size: 0.88rem;
+      color: #e5e7eb;
+      list-style: none;
+      margin-bottom: 1.2rem;
+    }
+
+    .coming-list li {
+      margin-bottom: 0.35rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .coming-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .coming-note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    .coming-form {
+      background: #111827;
+      border-radius: var(--radius-md);
+      border: 1px solid #1f2937;
+      padding: 1.2rem 1.1rem;
+    }
+
+    .coming-form h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .coming-form p {
+      font-size: 0.83rem;
+      color: #d1d5db;
+      margin-bottom: 0.7rem;
+    }
+
+    .coming-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .coming-form input[type="email"] {
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .coming-form input[type="email"]:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 1px #6366f166;
+    }
+
+    .btn-light {
+      background: #f9fafb;
+      color: #111827;
+      border-radius: 999px;
+      border: none;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .coming-smallprint {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    /* TESTIMONIALS / QUOTE */
+
+    .testimonials {
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 1.7rem;
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.4rem;
+    }
+
+    .quote {
+      font-size: 0.96rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .quote span {
+      font-size: 1.4rem;
+      margin-right: 0.2rem;
+    }
+
+    .quote-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .bullet-list {
+      font-size: 0.86rem;
+      color: var(--muted);
+      list-style: none;
+    }
+
+    .bullet-list li {
+      margin-bottom: 0.35rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .bullet-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .faq-q {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-a {
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    /* CTA BAND */
+
+    .cta-band {
+      margin-top: 2.4rem;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.6rem;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .cta-band-text {
+      max-width: 32rem;
+    }
+
+    .cta-band-text h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .cta-band-text p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .cta-band form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .cta-band input[type="email"] {
+      flex: 1 1 200px;
+      min-width: 0;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .cta-band input[type="email"]:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px #2563eb22;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.6rem 0 2.2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .hero,
+      .coming-soon,
+      .testimonials {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav-links {
+        display: none;
+      }
+
+      .steps-grid,
+      .cards-grid,
+      .faq-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      main {
+        padding-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <div class="brand-mark">ED</div>
+          <span>ED After 30</span>
+        </div>
+        <div class="nav-links">
+          <a href="#how-it-works">How it works</a>
+          <a href="#learn">What you’ll learn</a>
+          <a href="#coming-soon">Coming soon</a>
+          <a href="#faq">FAQ</a>
+          <button class="btn btn-primary">Join early-access list</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="eyebrow">
+            <span></span> Educational hub for men’s ED after 30
+          </div>
+          <h1>Understand your ED, before you jump into treatment.</h1>
+          <p class="hero-sub">
+            Clear, clinically grounded education for men in their 30s, 40s and
+            50s who want real answers about erections, health and next steps –
+            without sales pressure.
+          </p>
+          <form class="hero-email">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email to join the early-access list"
+              required
+            />
+            <button type="submit" class="btn btn-primary">
+              Get early updates
+            </button>
+          </form>
+          <p class="hero-meta">
+            You will receive occasional emails with new guides, tools and
+            invitations to small pilot projects. No spam. Unsubscribe any time.
+          </p>
+        </div>
+
+        <aside class="hero-right">
+          <div class="hero-right-inner">
+            <h2>Your ED learning path, not a prescription pad.</h2>
+            <div class="pill-row">
+              <div class="pill pill-strong">Education first</div>
+              <div class="pill">Evidence-based content</div>
+              <div class="pill">Built by clinicians</div>
+            </div>
+            <ul>
+              <li>Understand common physical and psychological causes of ED.</li>
+              <li>See how ED links to heart, metabolic and hormone health.</li>
+              <li>Prepare better questions for your GP or specialist.</li>
+            </ul>
+            <p class="hero-tagline">
+              This site does not prescribe or sell medication. It helps you make
+              sense of your symptoms and plan safer conversations with your own
+              clinician.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- TRUST STRIP -->
+      <section class="trust-strip">
+        <div class="trust-row">
+          <div>Designed around how ED is actually assessed in clinic.</div>
+          <div class="trust-badges">
+            <div class="trust-pill">Guideline-aware content</div>
+            <div class="trust-pill">No affiliate links or ads</div>
+            <div class="trust-pill">Future tools piloted with small groups</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS (EDUCATION FLOW) -->
+      <section id="how-it-works" class="section">
+        <div class="section-header">
+          <span>How this project works</span>
+          <h2>Learn, reflect, then plan your next move.</h2>
+          <p>
+            ED After 30 is being built in public. Content and tools are shaped
+            by men who join the early-access list and share what they actually
+            need.
+          </p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">Step 1</div>
+            <h3>Start with solid knowledge</h3>
+            <p>
+              Short, focused guides explain what ED is, why it happens and when
+              it can signal something important about your overall health.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">Step 2</div>
+            <h3>Reflect on your own picture</h3>
+            <p>
+              Use checklists and prompts (coming soon) to map symptoms,
+              lifestyle and medical history – so you see the whole picture, not
+              just “performance”.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">Step 3</div>
+            <h3>Go to your clinician prepared</h3>
+            <p>
+              Bring clear notes to your GP or specialist, ask better questions
+              and understand the reasoning behind investigations and treatments.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU WILL LEARN -->
+      <section id="learn" class="section">
+        <div class="section-header">
+          <span>What you’ll learn</span>
+          <h2>From “What’s wrong with me?” to “I know what to ask for.”</h2>
+          <p>
+            ED After 30 focuses on the questions men actually have – from
+            morning erections and porn use to diabetes, blood pressure and
+            testosterone.
+          </p>
+        </div>
+        <div class="cards-grid">
+          <article class="card">
+            <h3>How erections really work</h3>
+            <p>
+              A clear explanation of blood flow, nerves and hormones – and why
+              small changes in health can show up first in the bedroom.
+            </p>
+            <div class="chip-row">
+              <div class="chip">Blood vessels</div>
+              <div class="chip">Nerves</div>
+              <div class="chip">Testosterone</div>
+            </div>
+          </article>
+          <article class="card">
+            <h3>ED, heart health and diabetes</h3>
+            <p>
+              Why ED can be an early warning sign for cardiovascular disease and
+              metabolic problems, and which checks to discuss with your GP.
+            </p>
+            <div class="chip-row">
+              <div class="chip">Blood pressure</div>
+              <div class="chip">HbA1c &amp; lipids</div>
+              <div class="chip">Cardiac risk</div>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Beyond “it’s all in your head”</h3>
+            <p>
+              How stress, anxiety, porn, relationship dynamics and mood interact
+              with biology – often amplifying a physical issue that is already
+              there.
+            </p>
+            <div class="chip-row">
+              <div class="chip">Performance anxiety</div>
+              <div class="chip">Low mood</div>
+              <div class="chip">Communication</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- COMING SOON / LIMITED EARLY ACCESS -->
+      <section id="coming-soon" class="section">
+        <div class="coming-soon">
+          <div>
+            <div class="coming-tag">Coming soon</div>
+            <h2>Interactive tools, small-group pilots and more.</h2>
+            <p>
+              The long-term vision is to build practical resources: guided
+              self-assessments, conversation checklists for partners and
+              potentially structured programmes in collaboration with clinicians.
+            </p>
+            <ul class="coming-list">
+              <li>Downloadable ED consultation prep checklist.</li>
+              <li>Guides to common investigations and what results mean.</li>
+              <li>
+                Optional small-group pilots (limited spots) to test new tools
+                and give feedback.
+              </li>
+            </ul>
+            <p class="coming-note">
+              Early pilots are deliberately kept small so feedback can be read
+              and acted on. Joining the list does not commit you to taking part
+              – you simply hear about opportunities first.
+            </p>
+          </div>
+          <div class="coming-form">
+            <h3>Join the early-access list</h3>
+            <p>
+              Be among the first to see new guides and tools. A small number of
+              subscribers may be invited to test early versions and share
+              feedback.
+            </p>
+            <form>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your best email"
+                required
+              />
+              <button type="submit" class="btn-light">
+                Join the list
+              </button>
+              <div class="coming-smallprint">
+                Limited early pilot spots, no obligation. You can unsubscribe in
+                one click.
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS / PROOF (conceptual) -->
+      <section class="section">
+        <div class="testimonials">
+          <div>
+            <p class="quote">
+              <span>“</span>Reading clear explanations before seeing my GP made
+              the appointment much easier. I knew what tests to ask about and
+              stopped blaming myself.
+            </p>
+            <div class="quote-meta">
+              Man in his 40s, early reader (anonymised).
+            </div>
+          </div>
+          <div>
+            <ul class="bullet-list">
+              <li>Built from real clinic questions men ask every week.</li>
+              <li>Focus on safety, understanding and long-term health.</li>
+              <li>No promotion of specific products or online pharmacies.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section">
+        <div class="section-header">
+          <span>Questions</span>
+          <h2>Frequently asked questions</h2>
+          <p>
+            A few important clarifications before you sign up or use the
+            content.
+          </p>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q">Is this a medical service or clinic?</div>
+            <div class="faq-a">
+              No. ED After 30 is currently an educational project. It does not
+              diagnose, treat or prescribe. The aim is to help you understand ED
+              and prepare for better conversations with your own clinician.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Will I get ED tablets or treatment here?</div>
+            <div class="faq-a">
+              No. We do not supply medication or devices. We explain how
+              treatments work, who they are usually for, and which safety issues
+              your prescriber will consider.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              What does “limited early-access spots” actually mean?
+            </div>
+            <div class="faq-a">
+              As new tools or pilot projects are developed, a small number of
+              subscribers may be invited to test them and provide feedback. This
+              is to keep the workload manageable and ensure thoughtful
+              improvements, not to create artificial urgency.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How often will you email me?</div>
+            <div class="faq-a">
+              Only when there is something useful to share – new guides, tools
+              or invitations to early pilots. You can unsubscribe at any time
+              from any email.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA BAND -->
+      <section class="cta-band">
+        <div class="cta-band-text">
+          <h2>Want to be in the first wave when new tools launch?</h2>
+          <p>
+            Join the early-access list and help shape a genuinely useful ED
+            education platform for men after 30.
+          </p>
+        </div>
+        <form>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email"
+            required
+          />
+          <button type="submit" class="btn btn-primary">
+            Join early-access
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        © <span id="year"></span> ED After 30. All rights reserved.
+        Information on this site is for general education only and does not
+        replace personal medical advice. If you have chest pain, sudden
+        breathlessness or collapse, seek urgent medical attention.
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Clinical disclaimer</a>
+      </div>
+    </div>
+    <script>
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>
