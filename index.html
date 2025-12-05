@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ED After 30 – Evidence-Based Education for Men’s Sexual Health</title>
+  <title>ED After 30 – Education-First Support for Men’s Sexual Health</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Educational hub for men 30+ who want clear, evidence-based guidance on erectile dysfunction. Learn, reflect, and prepare for better conversations with your clinician. Join the early-access list for upcoming tools and resources." />
+  <meta
+    name="description"
+    content="Education-first project for men in their 30s, 40s and beyond who want clear, evidence-based guidance on erectile dysfunction – without pressure or hard selling. Join the early-access list for future tools and support."
+  />
 
   <style>
     :root {
@@ -359,7 +362,32 @@
       max-width: 34rem;
     }
 
-    /* HOW IT WORKS (EDUCATION FLOW) */
+    /* THREE-COLUMN INFO */
+
+    .cols-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.2rem;
+      border: 1px solid var(--border);
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .info-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ROADMAP */
 
     .steps-grid {
       display: grid;
@@ -393,7 +421,7 @@
       color: var(--muted);
     }
 
-    /* WHAT YOU WILL LEARN */
+    /* FEATURED TOPICS */
 
     .cards-grid {
       display: grid;
@@ -434,13 +462,63 @@
       color: var(--muted);
     }
 
-    /* COMING SOON / LIMITED EARLY ACCESS */
+    /* EMAIL CTA BLOCK */
 
-    .coming-soon {
+    .cta-block {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 1.7rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 1.8rem;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.4rem;
       align-items: center;
+    }
+
+    .cta-block h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta-block p {
+      font-size: 0.93rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .cta-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .cta-form input[type="email"] {
+      flex: 1 1 200px;
+      min-width: 0;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .cta-form input[type="email"]:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px #2563eb22;
+    }
+
+    .cta-smallprint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* FUTURE SUPPORT SECTION */
+
+    .future {
       background: #000000;
       color: #f9fafb;
       border-radius: var(--radius-lg);
@@ -448,149 +526,41 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .coming-soon h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .coming-soon p {
-      font-size: 0.93rem;
-      color: #e5e7eb;
-      margin-bottom: 1rem;
-    }
-
-    .coming-tag {
+    .future-tag {
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #a5b4fc;
       font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .coming-list {
-      font-size: 0.88rem;
-      color: #e5e7eb;
-      list-style: none;
-      margin-bottom: 1.2rem;
-    }
-
-    .coming-list li {
       margin-bottom: 0.35rem;
-      padding-left: 1.1rem;
-      position: relative;
     }
 
-    .coming-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-
-    .coming-note {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 0.4rem;
-    }
-
-    .coming-form {
-      background: #111827;
-      border-radius: var(--radius-md);
-      border: 1px solid #1f2937;
-      padding: 1.2rem 1.1rem;
-    }
-
-    .coming-form h3 {
-      font-size: 0.98rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .coming-form p {
-      font-size: 0.83rem;
-      color: #d1d5db;
-      margin-bottom: 0.7rem;
-    }
-
-    .coming-form form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .coming-form input[type="email"] {
-      padding: 0.55rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid #374151;
-      background: #020617;
-      color: #e5e7eb;
-      font-size: 0.88rem;
-      outline: none;
-    }
-
-    .coming-form input[type="email"]:focus {
-      border-color: #6366f1;
-      box-shadow: 0 0 0 1px #6366f166;
-    }
-
-    .btn-light {
-      background: #f9fafb;
-      color: #111827;
-      border-radius: 999px;
-      border: none;
-      padding: 0.55rem 1.4rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .coming-smallprint {
-      font-size: 0.75rem;
-      color: #9ca3af;
-      margin-top: 0.4rem;
-    }
-
-    /* TESTIMONIALS / QUOTE */
-
-    .testimonials {
-      background: var(--bg-soft);
-      border-radius: var(--radius-lg);
-      padding: 1.8rem 1.7rem;
-      border: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 1.4rem;
-    }
-
-    .quote {
-      font-size: 0.96rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .quote span {
+    .future h2 {
       font-size: 1.4rem;
-      margin-right: 0.2rem;
+      margin-bottom: 0.6rem;
     }
 
-    .quote-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
+    .future p {
+      font-size: 0.93rem;
+      color: #e5e7eb;
+      margin-bottom: 0.6rem;
     }
 
-    .bullet-list {
-      font-size: 0.86rem;
-      color: var(--muted);
+    .future-list {
+      font-size: 0.85rem;
+      color: #d1d5db;
       list-style: none;
+      margin-top: 0.2rem;
     }
 
-    .bullet-list li {
+    .future-list li {
       margin-bottom: 0.35rem;
       padding-left: 1.1rem;
       position: relative;
     }
 
-    .bullet-list li::before {
-      content: "–";
+    .future-list li::before {
+      content: "•";
       position: absolute;
       left: 0;
       top: 0;
@@ -620,58 +590,6 @@
     .faq-a {
       font-size: 0.87rem;
       color: var(--muted);
-    }
-
-    /* CTA BAND */
-
-    .cta-band {
-      margin-top: 2.4rem;
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem 1.6rem;
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .cta-band-text {
-      max-width: 32rem;
-    }
-
-    .cta-band-text h2 {
-      font-size: 1.25rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .cta-band-text p {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .cta-band form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      align-items: center;
-    }
-
-    .cta-band input[type="email"] {
-      flex: 1 1 200px;
-      min-width: 0;
-      padding: 0.55rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 0.9rem;
-      outline: none;
-      background: #ffffff;
-    }
-
-    .cta-band input[type="email"]:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 1px #2563eb22;
     }
 
     /* FOOTER */
@@ -707,8 +625,7 @@
 
     @media (max-width: 960px) {
       .hero,
-      .coming-soon,
-      .testimonials {
+      .cta-block {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -718,6 +635,7 @@
         display: none;
       }
 
+      .cols-3,
       .steps-grid,
       .cards-grid,
       .faq-grid {
@@ -739,11 +657,12 @@
           <span>ED After 30</span>
         </div>
         <div class="nav-links">
-          <a href="#how-it-works">How it works</a>
-          <a href="#learn">What you’ll learn</a>
-          <a href="#coming-soon">Coming soon</a>
+          <a href="#learn">Learn</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#updates">Updates</a>
+          <a href="#future">Future support</a>
           <a href="#faq">FAQ</a>
-          <button class="btn btn-primary">Join early-access list</button>
+          <button class="btn btn-primary">Join early-access</button>
         </div>
       </nav>
     </div>
@@ -755,15 +674,16 @@
       <section class="hero">
         <div>
           <div class="eyebrow">
-            <span></span> Educational hub for men’s ED after 30
+            <span></span> Education-first project for men’s ED after 30
           </div>
-          <h1>Understand your ED, before you jump into treatment.</h1>
+          <h1>Understand your ED before you ever think about treatment.</h1>
           <p class="hero-sub">
             Clear, clinically grounded education for men in their 30s, 40s and
             50s who want real answers about erections, health and next steps –
-            without sales pressure.
+            without sales pressure or promises of quick fixes.
           </p>
-          <form class="hero-email">
+          <!-- HERO EMAIL FORM (replace action with your email platform later) -->
+          <form class="hero-email" action="#" method="post">
             <input
               type="email"
               name="email"
@@ -775,28 +695,29 @@
             </button>
           </form>
           <p class="hero-meta">
-            You will receive occasional emails with new guides, tools and
-            invitations to small pilot projects. No spam. Unsubscribe any time.
+            Join to get clear, clinician-backed ED guides — and be first to try
+            the upcoming ED Assessment Journey that generates your personalised
+            starting plan. No pressure, no sales, unsubscribe anytime.
           </p>
         </div>
 
         <aside class="hero-right">
           <div class="hero-right-inner">
-            <h2>Your ED learning path, not a prescription pad.</h2>
+            <h2>ED clarity first. Any future services come later.</h2>
             <div class="pill-row">
               <div class="pill pill-strong">Education first</div>
-              <div class="pill">Evidence-based content</div>
+              <div class="pill">No medication sales</div>
               <div class="pill">Built by clinicians</div>
             </div>
             <ul>
-              <li>Understand common physical and psychological causes of ED.</li>
+              <li>Understand common physical and psychological drivers of ED.</li>
               <li>See how ED links to heart, metabolic and hormone health.</li>
               <li>Prepare better questions for your GP or specialist.</li>
             </ul>
             <p class="hero-tagline">
-              This site does not prescribe or sell medication. It helps you make
-              sense of your symptoms and plan safer conversations with your own
-              clinician.
+              ED After 30 does not currently prescribe or run consultations. It
+              exists to help you make sense of your symptoms and feel more
+              confident when you seek help.
             </p>
           </div>
         </aside>
@@ -805,178 +726,224 @@
       <!-- TRUST STRIP -->
       <section class="trust-strip">
         <div class="trust-row">
-          <div>Designed around how ED is actually assessed in clinic.</div>
+          <div>Built on how ED is actually explored in clinic – without the time pressure.</div>
           <div class="trust-badges">
-            <div class="trust-pill">Guideline-aware content</div>
-            <div class="trust-pill">No affiliate links or ads</div>
-            <div class="trust-pill">Future tools piloted with small groups</div>
+            <div class="trust-pill">Guideline-aware explanations</div>
+            <div class="trust-pill">No ads or affiliate links</div>
+            <div class="trust-pill">Future tools shaped by readers</div>
           </div>
         </div>
       </section>
 
-      <!-- HOW IT WORKS (EDUCATION FLOW) -->
-      <section id="how-it-works" class="section">
+      <!-- WHAT THIS IS / ISN'T -->
+      <section id="learn" class="section">
         <div class="section-header">
-          <span>How this project works</span>
-          <h2>Learn, reflect, then plan your next move.</h2>
+          <span>What this project is</span>
+          <h2>Clarity, calm and context for ED – not a sales funnel.</h2>
           <p>
-            ED After 30 is being built in public. Content and tools are shaped
-            by men who join the early-access list and share what they actually
-            need.
+            Most online ED content either minimises the problem or tries to sell
+            something quickly. ED After 30 is different by design.
+          </p>
+        </div>
+        <div class="cols-3">
+          <div class="info-card">
+            <h3>What you’ll get</h3>
+            <p>
+              Plain-English explanations of how erections work, why problems
+              appear in your 30s–50s, and what your clinician is actually
+              thinking about when they investigate ED.
+            </p>
+          </div>
+          <div class="info-card">
+            <h3>What you won’t get</h3>
+            <p>
+              No instant promises, miracle supplements or pressure to buy
+              medication. No hidden pharmacy deals, no upsell sequence in the
+              background.
+            </p>
+          </div>
+          <div class="info-card">
+            <h3>Why it exists</h3>
+            <p>
+              When men understand the link between ED, heart health, hormones,
+              mental health and lifestyle, they stop blaming themselves and
+              start making informed decisions instead of panic purchases.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROADMAP -->
+      <section id="roadmap" class="section">
+        <div class="section-header">
+          <span>Your roadmap</span>
+          <h2>From “What’s wrong with me?” to “I know what to ask for.”</h2>
+          <p>
+            ED After 30 is built around a simple three-step framework that you
+            can revisit at any stage.
           </p>
         </div>
         <div class="steps-grid">
-          <div class="step-card">
+          <article class="step-card">
             <div class="step-number">Step 1</div>
-            <h3>Start with solid knowledge</h3>
+            <h3>Learn the foundations</h3>
             <p>
-              Short, focused guides explain what ED is, why it happens and when
-              it can signal something important about your overall health.
+              Get clear on blood flow, nerves, hormones and how stress and
+              relationships interact with your body. Understand why ED can be an
+              early health signal, not just a bedroom issue.
             </p>
-          </div>
-          <div class="step-card">
+          </article>
+          <article class="step-card">
             <div class="step-number">Step 2</div>
             <h3>Reflect on your own picture</h3>
             <p>
-              Use checklists and prompts (coming soon) to map symptoms,
-              lifestyle and medical history – so you see the whole picture, not
-              just “performance”.
+              Use upcoming guides and prompts to map symptoms, patterns,
+              lifestyle factors, medications and existing diagnoses – so your
+              ED stops feeling random or mysterious.
             </p>
-          </div>
-          <div class="step-card">
+          </article>
+          <article class="step-card">
             <div class="step-number">Step 3</div>
-            <h3>Go to your clinician prepared</h3>
+            <h3>Start your ED assessment journey</h3>
             <p>
-              Bring clear notes to your GP or specialist, ask better questions
-              and understand the reasoning behind investigations and treatments.
+              When you feel ready, you’ll be able to work through a guided ED
+              assessment journey here and receive a personalised starting plan
+              for your ED management – including lifestyle focus points,
+              recommended blood tests to discuss with your GP, and practical
+              next-step ideas based on your unique pattern of symptoms.
             </p>
-          </div>
+          </article>
         </div>
       </section>
 
-      <!-- WHAT YOU WILL LEARN -->
-      <section id="learn" class="section">
-        <div class="section-header">
-          <span>What you’ll learn</span>
-          <h2>From “What’s wrong with me?” to “I know what to ask for.”</h2>
+      <!-- COMING SOON: ED ASSESSMENT JOURNEY -->
+      <section class="section">
+        <div class="future">
+          <div class="future-tag">Coming soon</div>
+          <h2>Your ED Assessment Journey – personalised, structured, and judgement-free</h2>
           <p>
-            ED After 30 focuses on the questions men actually have – from
-            morning erections and porn use to diabetes, blood pressure and
-            testosterone.
+            Soon you'll be able to complete a guided ED assessment here — designed to help
+            you understand your unique pattern of symptoms and receive a personalised starting
+            plan that includes lifestyle focus points, recommended blood tests to discuss with
+            your GP, and practical next-step ideas grounded in how ED is approached in clinic.
+          </p>
+          <p>
+            The journey is optional and completely pressure-free. Early-access subscribers will
+            be the first to try it and shape future versions.
+          </p>
+        </div>
+      </section>
+
+      <!-- FEATURED TOPICS -->
+      <section class="section">
+        <div class="section-header">
+          <span>Topics we focus on</span>
+          <h2>Real questions men ask about ED in their 30s, 40s and 50s.</h2>
+          <p>
+            The content will grow over time, guided by the questions and
+            patterns that keep coming up in real life.
           </p>
         </div>
         <div class="cards-grid">
           <article class="card">
-            <h3>How erections really work</h3>
+            <h3>ED & heart health</h3>
             <p>
-              A clear explanation of blood flow, nerves and hormones – and why
-              small changes in health can show up first in the bedroom.
-            </p>
-            <div class="chip-row">
-              <div class="chip">Blood vessels</div>
-              <div class="chip">Nerves</div>
-              <div class="chip">Testosterone</div>
-            </div>
-          </article>
-          <article class="card">
-            <h3>ED, heart health and diabetes</h3>
-            <p>
-              Why ED can be an early warning sign for cardiovascular disease and
-              metabolic problems, and which checks to discuss with your GP.
+              Why problems with erections can appear years before obvious heart
+              disease – and which checks are worth discussing with your GP.
             </p>
             <div class="chip-row">
               <div class="chip">Blood pressure</div>
               <div class="chip">HbA1c &amp; lipids</div>
-              <div class="chip">Cardiac risk</div>
+              <div class="chip">Cardiovascular risk</div>
             </div>
           </article>
           <article class="card">
-            <h3>Beyond “it’s all in your head”</h3>
+            <h3>Testosterone, energy & mood</h3>
             <p>
-              How stress, anxiety, porn, relationship dynamics and mood interact
-              with biology – often amplifying a physical issue that is already
-              there.
+              What “low T” really means, how it is properly assessed, and why
+              symptoms and blood tests both matter more than hype.
+            </p>
+            <div class="chip-row">
+              <div class="chip">Symptoms</div>
+              <div class="chip">Timing of tests</div>
+              <div class="chip">When to be cautious</div>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Stress, porn, anxiety & relationships</h3>
+            <p>
+              How psychological factors can amplify a physical issue – and how
+              to approach them without shame, blame or oversimplification.
             </p>
             <div class="chip-row">
               <div class="chip">Performance anxiety</div>
-              <div class="chip">Low mood</div>
+              <div class="chip">Porn habits</div>
               <div class="chip">Communication</div>
             </div>
           </article>
         </div>
       </section>
 
-      <!-- COMING SOON / LIMITED EARLY ACCESS -->
-      <section id="coming-soon" class="section">
-        <div class="coming-soon">
+      <!-- EMAIL CTA BLOCK -->
+      <section id="updates" class="section">
+        <div class="cta-block">
           <div>
-            <div class="coming-tag">Coming soon</div>
-            <h2>Interactive tools, small-group pilots and more.</h2>
+            <h2>Join the early-access list for new guides and tools.</h2>
             <p>
-              The long-term vision is to build practical resources: guided
-              self-assessments, conversation checklists for partners and
-              potentially structured programmes in collaboration with clinicians.
-            </p>
-            <ul class="coming-list">
-              <li>Downloadable ED consultation prep checklist.</li>
-              <li>Guides to common investigations and what results mean.</li>
-              <li>
-                Optional small-group pilots (limited spots) to test new tools
-                and give feedback.
-              </li>
-            </ul>
-            <p class="coming-note">
-              Early pilots are deliberately kept small so feedback can be read
-              and acted on. Joining the list does not commit you to taking part
-              – you simply hear about opportunities first.
+              You’ll hear when new educational modules, checklists and
+              reflection tools go live. Some subscribers may be invited to test
+              early versions and give feedback – completely optional.
             </p>
           </div>
-          <div class="coming-form">
-            <h3>Join the early-access list</h3>
-            <p>
-              Be among the first to see new guides and tools. A small number of
-              subscribers may be invited to test early versions and share
-              feedback.
-            </p>
-            <form>
+          <div>
+            <!-- SECOND EMAIL FORM (same ESP form can be reused here later) -->
+            <form class="cta-form" action="#" method="post">
               <input
                 type="email"
                 name="email"
                 placeholder="Your best email"
                 required
               />
-              <button type="submit" class="btn-light">
-                Join the list
+              <button type="submit" class="btn btn-primary">
+                Join early-access
               </button>
-              <div class="coming-smallprint">
-                Limited early pilot spots, no obligation. You can unsubscribe in
-                one click.
-              </div>
             </form>
+            <div class="cta-smallprint">
+              A few thoughtful emails per month at most. You can leave the list
+              at any time.
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- TESTIMONIALS / PROOF (conceptual) -->
-      <section class="section">
-        <div class="testimonials">
-          <div>
-            <p class="quote">
-              <span>“</span>Reading clear explanations before seeing my GP made
-              the appointment much easier. I knew what tests to ask about and
-              stopped blaming myself.
-            </p>
-            <div class="quote-meta">
-              Man in his 40s, early reader (anonymised).
-            </div>
-          </div>
-          <div>
-            <ul class="bullet-list">
-              <li>Built from real clinic questions men ask every week.</li>
-              <li>Focus on safety, understanding and long-term health.</li>
-              <li>No promotion of specific products or online pharmacies.</li>
-            </ul>
-          </div>
+      <!-- FUTURE SUPPORT / CONSULTATION PLACEHOLDER -->
+      <section id="future" class="section">
+        <div class="future">
+          <div class="future-tag">Looking ahead</div>
+          <h2>Education now. Thoughtful support later, if it genuinely helps.</h2>
+          <p>
+            Right now, ED After 30 is deliberately an educational project only.
+            There is no paid programme or consultation pathway to sign up for –
+            yet. That gives space to build resources that are actually useful
+            first.
+          </p>
+          <p>
+            Over time, there may be options such as structured self-assessment,
+            group education or carefully designed 1:1 support in collaboration
+            with clinicians. If and when that happens, early subscribers will be
+            the first to hear – with no obligation to take part.
+          </p>
+          <ul class="future-list">
+            <li>Clear boundary: this site is not a clinic or emergency service.</li>
+            <li>
+              Any future support model will prioritise safety, realism and
+              honest expectations.
+            </li>
+            <li>
+              You are always free to use the education here simply to get more
+              from your existing GP or specialist appointments.
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -986,8 +953,8 @@
           <span>Questions</span>
           <h2>Frequently asked questions</h2>
           <p>
-            A few important clarifications before you sign up or use the
-            content.
+            A few key clarifications about what ED After 30 is – and what it
+            is not.
           </p>
         </div>
         <div class="faq-grid">
@@ -995,60 +962,71 @@
             <div class="faq-q">Is this a medical service or clinic?</div>
             <div class="faq-a">
               No. ED After 30 is currently an educational project. It does not
-              diagnose, treat or prescribe. The aim is to help you understand ED
-              and prepare for better conversations with your own clinician.
+              diagnose, treat or prescribe. The aim is to help you understand
+              ED, reflect on your own situation and prepare for better
+              conversations with your own clinician.
             </div>
           </div>
           <div class="faq-item">
             <div class="faq-q">Will I get ED tablets or treatment here?</div>
             <div class="faq-a">
-              No. We do not supply medication or devices. We explain how
-              treatments work, who they are usually for, and which safety issues
-              your prescriber will consider.
+              No. This site explains how treatments are usually chosen and what
+              clinicians think about when prescribing, but it does not provide
+              medication or devices.
             </div>
           </div>
           <div class="faq-item">
             <div class="faq-q">
-              What does “limited early-access spots” actually mean?
+              Why talk about “future support” if there is nothing to book yet?
             </div>
             <div class="faq-a">
-              As new tools or pilot projects are developed, a small number of
-              subscribers may be invited to test them and provide feedback. This
-              is to keep the workload manageable and ensure thoughtful
-              improvements, not to create artificial urgency.
+              Because the long-term vision is to explore structured support
+              options. Being transparent now sets realistic expectations and
+              avoids surprise sales later. You are under no pressure to join
+              anything that might develop.
             </div>
           </div>
           <div class="faq-item">
             <div class="faq-q">How often will you email me?</div>
             <div class="faq-a">
-              Only when there is something useful to share – new guides, tools
-              or invitations to early pilots. You can unsubscribe at any time
-              from any email.
+              Only when there is something useful to share: new guides, tools or
+              invitations to small pilot projects. There is no daily sequence,
+              and you can unsubscribe at any time from any email.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CTA BAND -->
-      <section class="cta-band">
-        <div class="cta-band-text">
-          <h2>Want to be in the first wave when new tools launch?</h2>
-          <p>
-            Join the early-access list and help shape a genuinely useful ED
-            education platform for men after 30.
-          </p>
+      <!-- FINAL CTA BAND -->
+      <section class="section">
+        <div class="cta-block">
+          <div>
+            <h2>Want clearer answers about ED than you’ve had so far?</h2>
+            <p>
+              Join the early-access list and follow the project as it grows.
+              Learn at your own pace now, with the option of exploring additional
+              support later if it genuinely fits.
+            </p>
+          </div>
+          <div>
+            <!-- THIRD EMAIL FORM (same ESP form can replace this later) -->
+            <form class="cta-form" action="#" method="post">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your email"
+                required
+              />
+              <button type="submit" class="btn btn-primary">
+                Join early-access
+              </button>
+            </form>
+            <div class="cta-smallprint">
+              Your details are used only to send project updates and resources.
+              No data is shared with advertisers.
+            </div>
+          </div>
         </div>
-        <form>
-          <input
-            type="email"
-            name="email"
-            placeholder="Your email"
-            required
-          />
-          <button type="submit" class="btn btn-primary">
-            Join early-access
-          </button>
-        </form>
       </section>
     </div>
   </main>
