@@ -683,17 +683,13 @@
             without sales pressure or promises of quick fixes.
           </p>
           <!-- HERO EMAIL FORM (replace action with your email platform later) -->
-          <form class="hero-email" action="#" method="post">
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email to join the early-access list"
-              required
-            />
-            <button type="submit" class="btn btn-primary">
-              Get early updates
-            </button>
-          </form>
+          <form action="https://assets.mailerlite.com/jsonp/xxxxx/forms/xxxxx/subscribe" data-code="xxxxx" method="post">
+  <input type="email" name="fields[email]" placeholder="Email" required>
+  <input type="hidden" name="ml-submit" value="1">
+  <button type="submit">Subscribe</button>
+  <input type="hidden" name="anticsrf" value="ABC123">
+</form>
+
           <p class="hero-meta">
             Join to get clear, clinician-backed ED guides — and be first to try
             the upcoming ED Assessment Journey that generates your personalised
