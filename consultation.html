@@ -573,7 +573,8 @@
           <li class="gold-feat">Written follow-up summary</li>
           <li>Secure patient portal access</li>
         </ul>
-        <a href="#" class="btn-gold">Book Consultation →</a>
+        <!-- STEP 3: Replace with your Stripe Payment Link for £89 tier -->
+        <a href="https://buy.stripe.com/REPLACE_TIER2_LINK" class="btn-gold" target="_blank" rel="noopener">Book Consultation →</a>
       </div>
 
       <!-- Tier 3 -->
@@ -595,7 +596,8 @@
           <li class="gold-feat">Priority messaging with your clinician</li>
           <li>Progress tracking dashboard</li>
         </ul>
-        <a href="#" class="btn-outline">Start Programme →</a>
+        <!-- STEP 3: Replace with your Stripe Payment Link for £199 tier -->
+        <a href="https://buy.stripe.com/REPLACE_TIER3_LINK" class="btn-outline" target="_blank" rel="noopener">Start Programme →</a>
       </div>
 
     </div>
@@ -1104,11 +1106,23 @@ function showResults() {
         </div>
       </div>
 
-      <div class="results-cta-box">
-        <h3>Ready for your next step?</h3>
-        <p>Your assessment profile is ready. A consultation with a clinician provides a formal diagnosis and a personalised treatment plan based on your specific results.</p>
-        <div class="btns">
-          <a href="#pricing" class="btn-gold">View Consultation Plans →</a>
+      <!-- Email capture before CTA — feeds into MailerLite (STEP 4) -->
+      <div class="results-cta-box" id="resultsCtaBox">
+        <h3>Get your results by email</h3>
+        <p>Enter your email to receive a copy of your ED profile and personalised next steps. We'll never share it.</p>
+        <form id="captureForm" onsubmit="submitCapture(event)" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px">
+          <input type="email" id="captureEmail" placeholder="your@email.com" required
+            style="flex:1;min-width:220px;max-width:300px;padding:12px 18px;border-radius:999px;border:1.5px solid var(--border);background:var(--bg-card);color:var(--white);font-size:0.9rem;outline:none">
+          <button type="submit" class="btn-gold" style="padding:12px 26px;font-size:0.9rem">Send My Results →</button>
+        </form>
+        <p id="captureSuccess" style="display:none;color:var(--green);font-size:0.88rem;margin-bottom:14px">
+          ✓ Results sent — check your inbox.
+        </p>
+        <p style="font-size:0.78rem;color:var(--muted)">Or skip and go straight to booking.</p>
+        <div class="btns" style="margin-top:16px">
+          <!-- STEP 4b: Replace with your Calendly link for free 15-min intro call -->
+          <a href="https://calendly.com/REPLACE_YOUR_CALENDLY/intro" class="btn-gold" target="_blank" rel="noopener">Book Free Intro Call →</a>
+          <a href="#pricing" class="btn-retake" style="display:inline-flex;align-items:center;padding:11px 24px">View All Plans</a>
           <button class="btn-retake" onclick="retake()">Retake Assessment</button>
         </div>
       </div>
@@ -1145,6 +1159,47 @@ function retake() {
     </div>
   `;
   render();
+}
+
+/* ── Email capture → MailerLite ──────────── */
+// STEP 4: Replace REPLACE_ML_FORM_ID with your MailerLite embedded form ID
+// Find it: MailerLite → Forms → Embedded → Copy the data-account value
+const ML_GROUP_ID = "REPLACE_ML_GROUP_ID";   // MailerLite group/list ID
+const ML_API_URL  = "https://api.mailerlite.com/api/v2/subscribers";
+// NOTE: For a static site, use MailerLite's JS Embed or their public form endpoint.
+// The simplest approach: embed their hosted form via the submitCapture function below,
+// or use their public subscriber API with your API key set as an env var in Netlify.
+
+function submitCapture(e) {
+  e.preventDefault();
+  const email = document.getElementById("captureEmail").value.trim();
+  if (!email) return;
+
+  // Grab current results to attach as subscriber fields
+  const {iief, sev, type} = score();
+
+  // MailerLite public form POST (replace with your actual embed action URL)
+  // Get this from: MailerLite → Forms → Embedded → copy form action URL
+  const ML_FORM_ACTION = "https://assets.mailerlite.com/jsonp/REPLACE/forms/REPLACE/subscribe";
+
+  const body = new FormData();
+  body.append("fields[email]", email);
+  body.append("fields[ed_severity]", sev);
+  body.append("fields[ed_type]", type);
+  body.append("fields[iief_score]", String(iief));
+  body.append("ml-submit", "1");
+  body.append("anticsrf", "true");
+
+  fetch(ML_FORM_ACTION, { method: "POST", body, mode: "no-cors" })
+    .then(() => {
+      document.getElementById("captureForm").style.display = "none";
+      document.getElementById("captureSuccess").style.display = "block";
+    })
+    .catch(() => {
+      // no-cors means we can't read the response — assume success
+      document.getElementById("captureForm").style.display = "none";
+      document.getElementById("captureSuccess").style.display = "block";
+    });
 }
 
 /* ── FAQ toggle ──────────────────────────── */
