@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ED After 30 — Confidential ED Assessment &amp; Consultation</title>
+  <meta name="description" content="A clinically-informed, confidential 10-minute questionnaire to identify your erectile dysfunction type and severity — based on IIEF guidelines.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #09090c;
+      --bg-card:     #111218;
+      --bg-card-2:   #16181f;
+      --border:      #1e2130;
+      --border-mid:  #2a2d3e;
+      --gold:        #c9973a;
+      --gold-light:  #edc96b;
+      --gold-dim:    #7a5820;
+      --gold-glow:   rgba(201,151,58,0.18);
+      --green:       #10b981;
+      --green-light: #34d399;
+      --green-dim:   #064e35;
+      --green-glow:  rgba(16,185,129,0.15);
+      --white:       #f0f2f8;
+      --text:        #c8ccd8;
+      --muted:       #6b7280;
+      --faint:       #3a3d4a;
+      --red:         #ef4444;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* ── Layout ────────────────────────────── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 96px 0; }
+
+    /* ── Typography ────────────────────────── */
+    h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+    h3 { font-size: 1.15rem; font-weight: 700; }
+
+    .gold-text  { background: linear-gradient(120deg, var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .green-text { color: var(--green); }
+    .eyebrow    { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .lead       { font-size: 1.08rem; color: var(--text); line-height: 1.75; max-width: 600px; }
+
+    /* ── Buttons ───────────────────────────── */
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #08080a; font-weight: 700; font-size: 0.95rem;
+      padding: 14px 32px; border-radius: 999px; border: none; cursor: pointer;
+      text-decoration: none; transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .btn-gold:hover  { transform: translateY(-2px); box-shadow: 0 8px 32px var(--gold-glow); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--gold); font-weight: 600; font-size: 0.95rem;
+      padding: 13px 30px; border-radius: 999px; border: 1.5px solid var(--gold-dim);
+      cursor: pointer; text-decoration: none; transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-outline:hover { background: var(--gold-glow); border-color: var(--gold); }
+    .btn-green {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      color: #08080a; font-weight: 700; font-size: 0.95rem;
+      padding: 14px 32px; border-radius: 999px; border: none; cursor: pointer;
+      text-decoration: none; transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--green-glow); }
+
+    /* ── Disclaimer bar ────────────────────── */
+    .disclaimer-bar {
+      background: rgba(239,68,68,0.07); border-bottom: 1px solid rgba(239,68,68,0.18);
+      padding: 9px 24px; text-align: center;
+      font-size: 0.76rem; color: #f87171; line-height: 1.4;
+    }
+
+    /* ── Nav ───────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(9,9,12,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1080px; margin: 0 auto; padding: 15px 24px;
+    }
+    .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .nav-logo em { font-style: normal; color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { font-size: 0.85rem !important; padding: 10px 22px !important; }
+
+    /* ── Hero ──────────────────────────────── */
+    .hero {
+      padding: 100px 0 88px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% -10%, rgba(201,151,58,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 85% 60%, rgba(16,185,129,0.06) 0%, transparent 60%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25);
+      color: var(--green-light); font-size: 0.75rem; font-weight: 700;
+      padding: 5px 14px; border-radius: 999px; letter-spacing: 0.07em;
+      text-transform: uppercase; margin-bottom: 22px;
+    }
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+    .hero h1 { margin-bottom: 22px; }
+    .hero .lead { margin-bottom: 38px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 52px; }
+    .hero-trust {
+      display: flex; flex-wrap: wrap; gap: 24px;
+      padding-top: 36px; border-top: 1px solid var(--border);
+    }
+    .trust-item { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 0.82rem; font-weight: 500; }
+    .trust-icon { font-size: 1rem; }
+
+    /* ── Divider ───────────────────────────── */
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+    /* ── Text centre helper ────────────────── */
+    .tc  { text-align: center; }
+    .tc .lead { margin-left: auto; margin-right: auto; }
+
+    /* ── ED Types grid ─────────────────────── */
+    .cards-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
+    .type-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 28px 24px; transition: border-color 0.2s;
+    }
+    .type-card:hover { border-color: var(--gold-dim); }
+    .type-icon {
+      width: 44px; height: 44px; border-radius: 10px; display: flex;
+      align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px;
+    }
+    .ti-gold  { background: rgba(201,151,58,0.12); }
+    .ti-green { background: rgba(16,185,129,0.12); }
+    .ti-blue  { background: rgba(99,102,241,0.12); }
+    .type-card h3 { margin-bottom: 8px; font-size: 1rem; }
+    .type-card p  { color: var(--text); font-size: 0.875rem; line-height: 1.65; }
+
+    /* ── How it works ──────────────────────── */
+    .steps-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 52px; position: relative; }
+    .steps-row::before {
+      content: ''; position: absolute; top: 25px; left: calc(16.67% + 14px); right: calc(16.67% + 14px);
+      height: 1px; background: linear-gradient(90deg, var(--gold-dim), var(--green-dim));
+    }
+    .step { text-align: center; }
+    .step-num {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #08080a; font-weight: 800; font-size: 1.15rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px; position: relative; z-index: 1;
+    }
+    .step h3 { margin-bottom: 8px; }
+    .step p  { color: var(--text); font-size: 0.875rem; line-height: 1.65; }
+
+    /* ── Questionnaire ─────────────────────── */
+    #questionnaire { background: var(--bg-card); }
+    .quiz-wrap { max-width: 720px; margin: 0 auto; }
+    .quiz-shell {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 22px; overflow: hidden; margin-top: 0;
+    }
+
+    /* progress */
+    .quiz-progress { height: 3px; background: var(--border); }
+    .quiz-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--green));
+      transition: width 0.4s ease;
+    }
+
+    /* step header */
+    .quiz-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 28px; border-bottom: 1px solid var(--border);
+    }
+    .quiz-section-lbl { color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .quiz-counter { color: var(--muted); font-size: 0.8rem; }
+
+    /* body */
+    .quiz-body { padding: 36px 28px; }
+    .q-text { font-size: 1.1rem; font-weight: 600; line-height: 1.45; margin-bottom: 7px; }
+    .q-hint { color: var(--muted); font-size: 0.82rem; margin-bottom: 24px; }
+    .q-note { color: var(--muted); font-size: 0.78rem; margin-top: 10px; }
+
+    /* options */
+    .opts { display: flex; flex-direction: column; gap: 10px; }
+    .opt {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px; background: var(--bg-card);
+      border: 1.5px solid var(--border); border-radius: 11px;
+      cursor: pointer; transition: border-color 0.12s, background 0.12s;
+      font-size: 0.92rem; color: var(--text); user-select: none;
+    }
+    .opt:hover  { border-color: var(--gold-dim); background: rgba(201,151,58,0.04); color: var(--white); }
+    .opt.sel    { border-color: var(--gold); background: rgba(201,151,58,0.09); color: var(--white); }
+    .opt-radio  {
+      width: 17px; height: 17px; border-radius: 50%;
+      border: 2px solid var(--faint); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .opt.sel .opt-radio { border-color: var(--gold); background: var(--gold); }
+    .opt-radio::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #09090c; display: none; }
+    .opt.sel .opt-radio::after { display: block; }
+
+    /* checkbox variant */
+    .opts.multi .opt-radio { border-radius: 4px; }
+    .opts.multi .opt.sel .opt-radio::after { content: '✓'; font-size: 10px; font-weight: 800; color: #09090c; display: flex; align-items: center; justify-content: center; }
+
+    /* footer */
+    .quiz-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 28px; border-top: 1px solid var(--border);
+    }
+    .btn-back {
+      background: transparent; border: 1.5px solid var(--border); color: var(--muted);
+      padding: 10px 22px; border-radius: 999px; cursor: pointer; font-size: 0.875rem;
+      transition: border-color 0.12s, color 0.12s;
+    }
+    .btn-back:hover { border-color: var(--muted); color: var(--white); }
+    .btn-next {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #08080a; font-weight: 700; font-size: 0.92rem;
+      padding: 11px 28px; border-radius: 999px; border: none; cursor: pointer;
+      transition: box-shadow 0.15s, opacity 0.15s;
+    }
+    .btn-next:hover:not(:disabled) { box-shadow: 0 4px 20px var(--gold-glow); }
+    .btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    /* ── Results ───────────────────────────── */
+    .results-body { padding: 36px 28px; }
+    .results-top { text-align: center; margin-bottom: 36px; }
+    .sev-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.82rem; font-weight: 700; padding: 7px 18px;
+      border-radius: 999px; margin-bottom: 14px; letter-spacing: 0.04em;
+    }
+    .sev-severe      { background: rgba(239,68,68,.12);  color: #f87171; border: 1px solid rgba(239,68,68,.25); }
+    .sev-moderate    { background: rgba(249,115,22,.12); color: #fb923c; border: 1px solid rgba(249,115,22,.25); }
+    .sev-mild-mod    { background: rgba(234,179,8,.12);  color: #fcd34d; border: 1px solid rgba(234,179,8,.25); }
+    .sev-mild        { background: rgba(16,185,129,.12); color: #34d399; border: 1px solid rgba(16,185,129,.25); }
+    .sev-none        { background: rgba(16,185,129,.18); color: #6ee7b7; border: 1px solid rgba(16,185,129,.35); }
+    .results-top h2  { font-size: 1.5rem; margin-bottom: 12px; }
+    .results-top p   { color: var(--text); font-size: 0.92rem; max-width: 500px; margin: 0 auto 28px; line-height: 1.7; }
+
+    .factor-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-bottom: 28px; }
+    .factor-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 20px;
+    }
+    .factor-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .factor-val   { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+    .fbar { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .fbar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1s ease; }
+    .fb-gold  { background: linear-gradient(90deg, var(--gold-dim), var(--gold)); }
+    .fb-red   { background: linear-gradient(90deg, #7f1d1d, #ef4444); }
+    .fb-blue  { background: linear-gradient(90deg, #1e3a5f, #6366f1); }
+    .fb-green { background: linear-gradient(90deg, var(--green-dim), var(--green)); }
+
+    .results-cta-box {
+      background: rgba(201,151,58,0.07); border: 1px solid rgba(201,151,58,0.18);
+      border-radius: 16px; padding: 26px 28px; text-align: center;
+    }
+    .results-cta-box h3 { margin-bottom: 8px; font-size: 1.1rem; }
+    .results-cta-box p  { color: var(--text); font-size: 0.875rem; margin-bottom: 20px; }
+    .results-cta-box .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-retake {
+      background: transparent; border: 1.5px solid var(--gold-dim); color: var(--gold);
+      font-weight: 600; font-size: 0.875rem; padding: 11px 24px;
+      border-radius: 999px; cursor: pointer; transition: background 0.12s;
+    }
+    .btn-retake:hover { background: var(--gold-glow); }
+
+    /* ── Pricing ───────────────────────────── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; align-items: start; }
+    .price-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 22px; padding: 34px 28px; position: relative;
+    }
+    .price-card.featured { border-color: var(--gold); box-shadow: 0 0 48px rgba(201,151,58,0.12); }
+    .featured-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #08080a; font-size: 0.7rem; font-weight: 800;
+      padding: 4px 16px; border-radius: 999px; white-space: nowrap; letter-spacing: 0.06em;
+    }
+    .tier-label { color: var(--gold); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+    .price-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+    .price-amount { font-size: 2.6rem; font-weight: 800; color: var(--white); }
+    .price-period { color: var(--muted); font-size: 0.85rem; margin-left: 4px; }
+    .price-row { margin: 18px 0; }
+    .price-desc { color: var(--text); font-size: 0.875rem; line-height: 1.65; margin-bottom: 22px; }
+    .feat-list { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
+    .feat-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.875rem; color: var(--text); }
+    .feat-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .feat-list li.gold-feat { color: var(--white); }
+    .feat-list li.gold-feat::before { color: var(--gold); }
+    .price-card .btn-gold, .price-card .btn-outline { width: 100%; justify-content: center; }
+
+    /* ── FAQ ───────────────────────────────── */
+    .faq-list { max-width: 720px; margin: 52px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 0; cursor: pointer; font-weight: 600; font-size: 0.97rem;
+      transition: color 0.15s; gap: 16px;
+    }
+    .faq-q:hover  { color: var(--gold); }
+    .faq-icon     { color: var(--gold); font-size: 1.15rem; transition: transform 0.2s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { color: var(--text); font-size: 0.9rem; line-height: 1.75; padding-bottom: 22px; display: none; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── Footer ────────────────────────────── */
+    footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 60px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 44px; }
+    .footer-logo { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+    .footer-logo em { font-style: normal; color: var(--gold); }
+    .footer-tagline { color: var(--muted); font-size: 0.83rem; line-height: 1.65; max-width: 260px; }
+    .footer-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .footer-col a  { display: block; color: var(--text); text-decoration: none; font-size: 0.875rem; margin-bottom: 9px; transition: color 0.12s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 22px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 14px;
+    }
+    .footer-copy      { color: var(--muted); font-size: 0.78rem; }
+    .footer-disclaimer { color: var(--muted); font-size: 0.76rem; max-width: 580px; line-height: 1.55; }
+
+    /* ── Animations ────────────────────────── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.45s ease forwards; }
+
+    /* ── Responsive ────────────────────────── */
+    @media (max-width: 860px) {
+      .cards-3, .steps-row, .pricing-grid { grid-template-columns: 1fr; }
+      .steps-row::before { display: none; }
+      .factor-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding: 80px 0 64px; }
+      .quiz-body, .quiz-foot, .quiz-topbar { padding-left: 18px; padding-right: 18px; }
+      .results-body { padding: 24px 18px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .results-cta-box .btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Disclaimer -->
+<div class="disclaimer-bar">
+  This questionnaire is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional.
+</div>
+
+<!-- ── Nav ──────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">ED <em>After 30</em></a>
+    <div class="nav-links">
+      <a href="#about">About ED</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#questionnaire">Free Assessment</a>
+      <a href="#pricing">Plans &amp; Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#questionnaire" class="btn-gold nav-cta">Start Free Assessment</a>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Clinically-Informed Assessment</div>
+    <h1>Finally understand <span class="gold-text">why</span><br>you're experiencing ED</h1>
+    <p class="lead" style="margin-top:18px">
+      A confidential 10-minute questionnaire based on the IIEF clinical framework.
+      Identify your ED type, understand the root causes, and access the right treatment pathway.
+    </p>
+    <div class="hero-ctas">
+      <a href="#questionnaire" class="btn-gold">Take the Free Assessment →</a>
+      <a href="#how-it-works" class="btn-outline">How it works</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-icon">🔒</span> 100% Confidential</div>
+      <div class="trust-item"><span class="trust-icon">⏱</span> 10 Minutes</div>
+      <div class="trust-item"><span class="trust-icon">📋</span> Based on IIEF Clinical Guidelines</div>
+      <div class="trust-item"><span class="trust-icon">🆓</span> Free — No Registration Required</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── About ED Types ────────────────────── -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="tc">
+      <p class="eyebrow">Understanding ED</p>
+      <h2>ED is not <span class="gold-text">one thing</span></h2>
+      <p class="lead" style="margin-top:16px">
+        Erectile dysfunction has multiple root causes. The right treatment depends entirely on identifying which type — or which combination of types — applies to you.
+      </p>
+    </div>
+    <div class="cards-3">
+      <div class="type-card">
+        <div class="type-icon ti-gold">🧠</div>
+        <h3>Psychogenic ED</h3>
+        <p>Driven by performance anxiety, stress, depression, or relationship tension. Often affects younger men and is situational — erections may still occur in some contexts but not others.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-icon ti-green">❤️</div>
+        <h3>Vasculogenic ED</h3>
+        <p>Caused by reduced arterial blood flow, typically linked to cardiovascular risk factors — diabetes, high blood pressure, smoking, or elevated cholesterol. The most common physical cause over 40.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-icon ti-blue">⚗️</div>
+        <h3>Hormonal ED</h3>
+        <p>Related to low testosterone or other endocrine imbalances. Often accompanied by fatigue, reduced libido, and mood changes. Highly treatable once identified with blood testing.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-icon ti-gold">🧬</div>
+        <h3>Neurogenic ED</h3>
+        <p>Caused by nerve pathway disruption — from diabetes-related neuropathy, multiple sclerosis, spinal injury, or following pelvic surgery (prostate, bladder, bowel).</p>
+      </div>
+      <div class="type-card">
+        <div class="type-icon ti-green">🔄</div>
+        <h3>Mixed ED</h3>
+        <p>The most common presentation. Multiple contributing factors interact — a physical issue can create anxiety, which compounds the original problem. A layered approach is needed.</p>
+      </div>
+      <div class="type-card">
+        <div class="type-icon ti-blue">💊</div>
+        <h3>Medication-Induced ED</h3>
+        <p>Certain common prescriptions — including antidepressants, beta-blockers, and antihypertensives — can impair erectile function as a known side effect. Often overlooked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── How it works ──────────────────────── -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="tc">
+      <p class="eyebrow">The Process</p>
+      <h2>From assessment to <span class="gold-text">action</span></h2>
+      <p class="lead" style="margin-top:16px">Three steps from uncertainty to a clear, personalised plan.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Complete the Free Assessment</h3>
+        <p>20 clinically-validated questions using the IIEF-5 scoring system plus additional domains to categorise your ED type and severity.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Receive Your ED Profile</h3>
+        <p>Instantly see your severity score, primary ED type, and contributing factor breakdown — with a plain-English explanation of what your results mean.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Access Your Treatment Path</h3>
+        <p>Choose the support level that fits your needs — from a self-guided report to a full private consultation with prescription access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Questionnaire ─────────────────────── -->
+<section class="section" id="questionnaire">
+  <div class="container">
+    <div class="quiz-wrap">
+      <div class="tc" style="margin-bottom:44px">
+        <p class="eyebrow">Free Assessment</p>
+        <h2>Your 10-Minute ED Assessment</h2>
+        <p class="lead" style="margin-top:16px">
+          All answers are processed in your browser and never stored or shared.
+          Answer honestly for the most accurate results.
+        </p>
+      </div>
+
+      <div class="quiz-shell" id="quizShell">
+        <div class="quiz-progress">
+          <div class="quiz-progress-fill" id="qProgress" style="width:5%"></div>
+        </div>
+        <div class="quiz-topbar">
+          <span class="quiz-section-lbl" id="qSection">About You</span>
+          <span class="quiz-counter" id="qCounter">Question 1 of 20</span>
+        </div>
+        <div class="quiz-body" id="qBody"></div>
+        <div class="quiz-foot" id="qFoot">
+          <button class="btn-back" id="btnBack" onclick="goBack()" style="display:none">← Back</button>
+          <button class="btn-next" id="btnNext" onclick="goNext()" disabled>Continue →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Pricing ───────────────────────────── -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="tc">
+      <p class="eyebrow">Consultation Plans</p>
+      <h2>Choose your <span class="gold-text">support level</span></h2>
+      <p class="lead" style="margin-top:16px">Start free. Go deeper when you're ready. Every tier builds on the one before it.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- Tier 1 -->
+      <div class="price-card">
+        <p class="tier-label">Tier 1</p>
+        <h3 class="price-name">Assessment</h3>
+        <div class="price-row">
+          <span class="price-amount">Free</span>
+        </div>
+        <p class="price-desc">Understand your ED type and severity using our clinically-informed questionnaire — no registration required.</p>
+        <ul class="feat-list">
+          <li>20-question IIEF-based assessment</li>
+          <li>Severity score (mild → severe)</li>
+          <li>ED type categorisation</li>
+          <li>Contributing factors breakdown</li>
+          <li>Plain-English results report</li>
+          <li>General lifestyle pointers</li>
+        </ul>
+        <a href="#questionnaire" class="btn-outline">Start Free Assessment</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="price-card featured">
+        <div class="featured-badge">MOST POPULAR</div>
+        <p class="tier-label">Tier 2</p>
+        <h3 class="price-name">Core Consultation</h3>
+        <div class="price-row">
+          <span class="price-amount">£89</span>
+          <span class="price-period">one-time</span>
+        </div>
+        <p class="price-desc">A private clinical consultation with a practitioner who reviews your assessment profile and builds a personalised plan.</p>
+        <ul class="feat-list">
+          <li class="gold-feat">Everything in Assessment</li>
+          <li class="gold-feat">30-minute video consultation</li>
+          <li class="gold-feat">Personalised treatment plan</li>
+          <li class="gold-feat">Blood test recommendations</li>
+          <li class="gold-feat">Prescription access if appropriate</li>
+          <li class="gold-feat">Written follow-up summary</li>
+          <li>Secure patient portal access</li>
+        </ul>
+        <!-- STEP 3: Replace with your Stripe Payment Link for £89 tier -->
+        <a href="https://buy.stripe.com/REPLACE_TIER2_LINK" class="btn-gold" target="_blank" rel="noopener">Book Consultation →</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="price-card">
+        <p class="tier-label">Tier 3</p>
+        <h3 class="price-name">Premium Programme</h3>
+        <div class="price-row">
+          <span class="price-amount">£199</span>
+          <span class="price-period">/ 3 months</span>
+        </div>
+        <p class="price-desc">Comprehensive ongoing support for men who want lasting change — not just a prescription.</p>
+        <ul class="feat-list">
+          <li class="gold-feat">Everything in Core Consultation</li>
+          <li class="gold-feat">3 consultations over 3 months</li>
+          <li class="gold-feat">Hormonal &amp; metabolic testing</li>
+          <li class="gold-feat">Ongoing prescription management</li>
+          <li class="gold-feat">Lifestyle &amp; nutrition coaching</li>
+          <li class="gold-feat">Psychological support referral</li>
+          <li class="gold-feat">Priority messaging with your clinician</li>
+          <li>Progress tracking dashboard</li>
+        </ul>
+        <!-- STEP 3: Replace with your Stripe Payment Link for £199 tier -->
+        <a href="https://buy.stripe.com/REPLACE_TIER3_LINK" class="btn-outline" target="_blank" rel="noopener">Start Programme →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FAQ ──────────────────────────────── -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="tc">
+      <p class="eyebrow">Questions</p>
+      <h2>Frequently asked <span class="gold-text">questions</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my assessment completely private? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes. The entire questionnaire runs in your browser. No data is transmitted to any server, and no information is stored. We do not collect your name, email, or any identifiable detail for the free assessment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the IIEF and why is it used? <span class="faq-icon">+</span></div>
+        <div class="faq-a">The International Index of Erectile Function (IIEF) is the gold-standard validated questionnaire used in urology and clinical research worldwide. Our assessment incorporates the IIEF-5 (SHIM) for severity scoring and extends it with additional domains to categorise ED type — not just measure it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How accurate is this assessment? <span class="faq-icon">+</span></div>
+        <div class="faq-a">The IIEF-5 has demonstrated sensitivity of 98% and specificity of 88% for detecting ED in clinical validation studies. The ED type categorisation uses additional validated screening questions. However, this is a screening tool — formal diagnosis and treatment require a clinician consultation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I get a prescription from the questionnaire alone? <span class="faq-icon">+</span></div>
+        <div class="faq-a">No. The free assessment provides information and a profile only. A prescription for ED medication requires a consultation with a registered clinician, available through our Tier 2 and Tier 3 plans. This ensures safe and appropriate prescribing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I haven't been sexually active recently? <span class="faq-icon">+</span></div>
+        <div class="faq-a">The questionnaire includes options for men not currently sexually active. Questions about morning erections, self-stimulation, and historical patterns will still generate a meaningful profile. Select "no activity" options where applicable.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How soon can I book a consultation after my assessment? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Immediately. Once you've completed the free assessment you'll be shown booking options. Typical availability is within 48–72 hours, with some same-day appointments available.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is ED really common in men under 40? <span class="faq-icon">+</span></div>
+        <div class="faq-a">More common than most men realise. Research suggests up to 26% of new ED cases present in men under 40, and the Massachusetts Male Aging Study found some degree of erectile difficulty in 52% of men aged 40–70. ED in younger men is often primarily psychogenic — which makes it highly responsive to the right treatment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">ED <em>After 30</em></div>
+        <p class="footer-tagline">Confidential, clinically-informed support for men navigating erectile dysfunction. Evidence-based. Judgement-free.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Assessment</h4>
+        <a href="#questionnaire">Free Assessment</a>
+        <a href="#about">Understanding ED Types</a>
+        <a href="#pricing">Consultation Plans</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal &amp; Info</h4>
+        <a href="#faq">FAQ</a>
+        <a href="#">Clinical Disclaimer</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; <span id="fyear"></span> ED After 30. All rights reserved.</p>
+      <p class="footer-disclaimer">This service is for informational purposes only and does not replace professional medical advice, diagnosis, or treatment. If you have concerns about your health, please consult a qualified healthcare provider.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     QUESTIONNAIRE ENGINE
+     ═══════════════════════════════════════════ -->
+<script>
+"use strict";
+
+/* ── Question definitions ─────────────────── */
+const SECTIONS = ["About You","Erectile Function (IIEF-5)","Patterns & Context","Health & Risk Factors","Hormones & Wellbeing","Psychological Factors"];
+
+const QS = [
+  /* 0 – About You */
+  { s:0, id:"age", q:"What is your age range?",
+    hint:"Helps contextualise your results against population data.",
+    type:"single",
+    opts:[
+      {l:"18–29",        v:"18-29", sc:{psy:2}},
+      {l:"30–39",        v:"30-39", sc:{psy:1}},
+      {l:"40–49",        v:"40-49", sc:{vas:1}},
+      {l:"50–59",        v:"50-59", sc:{vas:2,hor:1}},
+      {l:"60 or over",   v:"60+",   sc:{vas:3,hor:2}}
+    ]
+  },
+  { s:0, id:"duration", q:"How long have you been experiencing erectile difficulties?",
+    hint:"Think about when you first noticed a consistent change.",
+    type:"single",
+    opts:[
+      {l:"Less than 3 months",  v:"lt3m",  sc:{psy:2}},
+      {l:"3–6 months",          v:"3-6m",  sc:{}},
+      {l:"6–12 months",         v:"6-12m", sc:{vas:1}},
+      {l:"1–3 years",           v:"1-3y",  sc:{vas:1}},
+      {l:"More than 3 years",   v:"gt3y",  sc:{vas:2}}
+    ]
+  },
+
+  /* 1 – IIEF-5 */
+  { s:1, id:"iief1", iief:true,
+    q:"How do you rate your confidence that you could get and keep an erection?",
+    hint:"Over the past 4 weeks.",
+    type:"single",
+    opts:[
+      {l:"Very low",   v:1},{l:"Low",      v:2},{l:"Moderate",  v:3},
+      {l:"High",       v:4},{l:"Very high", v:5}
+    ]
+  },
+  { s:1, id:"iief2", iief:true,
+    q:"When you had erections with sexual stimulation, how often were they hard enough for penetration?",
+    hint:"Over the past 4 weeks.",
+    type:"single",
+    opts:[
+      {l:"No sexual activity",               v:0},
+      {l:"Almost never / never",             v:1},
+      {l:"A few times (less than half)",     v:2},
+      {l:"Sometimes (about half the time)",  v:3},
+      {l:"Most times (more than half)",      v:4},
+      {l:"Almost always / always",           v:5}
+    ]
+  },
+  { s:1, id:"iief3", iief:true,
+    q:"During sexual intercourse, how often could you maintain your erection after penetration?",
+    hint:"Over the past 4 weeks. Select 'No activity' if none.",
+    type:"single",
+    opts:[
+      {l:"No sexual activity",               v:0},
+      {l:"Almost never / never",             v:1},
+      {l:"A few times (less than half)",     v:2},
+      {l:"Sometimes (about half the time)",  v:3},
+      {l:"Most times (more than half)",      v:4},
+      {l:"Almost always / always",           v:5}
+    ]
+  },
+  { s:1, id:"iief4", iief:true,
+    q:"During intercourse, how difficult was it to maintain your erection to completion?",
+    hint:"Over the past 4 weeks.",
+    type:"single",
+    opts:[
+      {l:"No sexual activity",  v:0},
+      {l:"Extremely difficult", v:1},
+      {l:"Very difficult",      v:2},
+      {l:"Difficult",           v:3},
+      {l:"Slightly difficult",  v:4},
+      {l:"Not difficult",       v:5}
+    ]
+  },
+  { s:1, id:"iief5", iief:true,
+    q:"When you attempted sexual intercourse, how often was it satisfactory for you?",
+    hint:"Over the past 4 weeks.",
+    type:"single",
+    opts:[
+      {l:"No attempts at intercourse",       v:0},
+      {l:"Almost never / never",             v:1},
+      {l:"A few times (less than half)",     v:2},
+      {l:"Sometimes (about half the time)",  v:3},
+      {l:"Most times (more than half)",      v:4},
+      {l:"Almost always / always",           v:5}
+    ]
+  },
+
+  /* 2 – Patterns */
+  { s:2, id:"morning", q:"Do you experience erections when you wake in the morning?",
+    hint:"Morning erections (nocturnal penile tumescence) are a key clinical indicator.",
+    type:"single",
+    opts:[
+      {l:"Yes, most mornings",        v:"reg",  sc:{psy:3}},
+      {l:"Sometimes (a few a week)",  v:"some", sc:{psy:2}},
+      {l:"Rarely (a few a month)",    v:"rare", sc:{vas:1,hor:1}},
+      {l:"Almost never or never",     v:"never",sc:{vas:2,hor:1}}
+    ]
+  },
+  { s:2, id:"solo", q:"Are you able to achieve an erection with masturbation / self-stimulation?",
+    hint:"",
+    type:"single",
+    opts:[
+      {l:"Yes, easily",                        v:"easy", sc:{psy:3}},
+      {l:"Yes, but with difficulty",           v:"hard", sc:{psy:1}},
+      {l:"Rarely",                             v:"rare", sc:{vas:1}},
+      {l:"No",                                 v:"no",   sc:{vas:2}},
+      {l:"I don't masturbate / prefer not to answer", v:"na", sc:{}}
+    ]
+  },
+  { s:2, id:"situational", q:"When do your erectile difficulties typically occur?",
+    hint:"",
+    type:"single",
+    opts:[
+      {l:"Only with a partner",                     v:"partner", sc:{psy:4}},
+      {l:"Mostly with a partner, occasionally alone",v:"mostly",  sc:{psy:2}},
+      {l:"In all sexual situations consistently",   v:"all",     sc:{vas:2}},
+      {l:"Unpredictable — it varies",               v:"varies",  sc:{psy:1}}
+    ]
+  },
+  { s:2, id:"onset", q:"How did your erectile difficulties begin?",
+    hint:"",
+    type:"single",
+    opts:[
+      {l:"Suddenly, linked to a specific event or relationship",  v:"sudden_event",   sc:{psy:4}},
+      {l:"Suddenly, with no obvious reason",                      v:"sudden_noreason",sc:{psy:1,neu:1}},
+      {l:"Gradually worsening over time",                         v:"gradual",        sc:{vas:2}},
+      {l:"I'm not sure",                                          v:"unsure",         sc:{}}
+    ]
+  },
+
+  /* 3 – Health */
+  { s:3, id:"conditions", q:"Do you have any of the following diagnosed conditions?",
+    hint:"Select all that apply.",
+    type:"multi",
+    opts:[
+      {l:"Type 2 diabetes or pre-diabetes",       v:"diabetes",    sc:{vas:2,neu:2}},
+      {l:"High blood pressure (hypertension)",    v:"hypertension",sc:{vas:2}},
+      {l:"High cholesterol / dyslipidaemia",      v:"cholesterol", sc:{vas:2}},
+      {l:"Heart disease or cardiovascular issue", v:"heart",       sc:{vas:3}},
+      {l:"Obesity (BMI above 30)",                v:"obesity",     sc:{vas:1,hor:1}},
+      {l:"None of the above",                     v:"none",        sc:{}, ex:true}
+    ]
+  },
+  { s:3, id:"smoking", q:"What is your smoking history?",
+    hint:"",
+    type:"single",
+    opts:[
+      {l:"Current smoker",              v:"current",sc:{vas:3}},
+      {l:"Ex-smoker (quit 1+ year ago)",v:"ex",     sc:{vas:1}},
+      {l:"Never smoked",                v:"never",  sc:{}}
+    ]
+  },
+  { s:3, id:"neuro", q:"Have you experienced any of the following?",
+    hint:"Select all that apply.",
+    type:"multi",
+    opts:[
+      {l:"Pelvic surgery (prostate, bladder, bowel)", v:"pelvic", sc:{neu:3}},
+      {l:"Spinal injury or spinal surgery",           v:"spinal", sc:{neu:3}},
+      {l:"Multiple sclerosis or neurological condition",v:"ms",   sc:{neu:3}},
+      {l:"Peyronie's disease (penile curvature)",     v:"peyronies",sc:{vas:1}},
+      {l:"None of the above",                         v:"none",   sc:{}, ex:true}
+    ]
+  },
+  { s:3, id:"medications", q:"Are you currently taking any regular medications?",
+    hint:"Certain prescriptions can directly contribute to ED — your clinician will review these.",
+    type:"single",
+    opts:[
+      {l:"Yes — antidepressants (SSRIs, SNRIs)",           v:"antidep",  sc:{med:3}},
+      {l:"Yes — blood pressure medications (beta-blockers)",v:"bpmeds",  sc:{med:2}},
+      {l:"Yes — other regular medications",                v:"other",   sc:{med:1}},
+      {l:"No regular medications",                         v:"none",    sc:{}}
+    ]
+  },
+
+  /* 4 – Hormones */
+  { s:4, id:"libido", q:"How would you rate your sex drive (libido) compared to previous years?",
+    hint:"",
+    type:"single",
+    opts:[
+      {l:"Higher than ever or unchanged",  v:"high",  sc:{}},
+      {l:"Slightly lower than before",     v:"slight",sc:{hor:1}},
+      {l:"Noticeably lower",               v:"lower", sc:{hor:2}},
+      {l:"Very low or almost absent",      v:"absent",sc:{hor:3}}
+    ]
+  },
+  { s:4, id:"hormonal_sx", q:"Do you experience any of the following symptoms?",
+    hint:"Select all that apply — these can indicate hormonal imbalances.",
+    type:"multi",
+    opts:[
+      {l:"Persistent fatigue or low energy",          v:"fatigue",  sc:{hor:1}},
+      {l:"Low mood, depression, or irritability",     v:"mood",     sc:{hor:1,psy:1}},
+      {l:"Reduced muscle mass or strength",           v:"muscle",   sc:{hor:2}},
+      {l:"Weight gain, especially around the abdomen",v:"weight",   sc:{hor:1,vas:1}},
+      {l:"Hot flushes or night sweats",               v:"flushes",  sc:{hor:2}},
+      {l:"None of the above",                         v:"none",     sc:{}, ex:true}
+    ]
+  },
+  { s:4, id:"alcohol", q:"How much alcohol do you typically drink per week?",
+    hint:"",
+    type:"single",
+    opts:[
+      {l:"None",                          v:"none",   sc:{}},
+      {l:"1–14 units (within guidelines)",v:"low",    sc:{}},
+      {l:"15–28 units",                   v:"mod",    sc:{vas:1}},
+      {l:"More than 28 units",            v:"high",   sc:{vas:2,hor:1}}
+    ]
+  },
+
+  /* 5 – Psychological */
+  { s:5, id:"stress", q:"How would you describe your current stress levels?",
+    hint:"",
+    type:"single",
+    opts:[
+      {l:"Low — life feels manageable",         v:"low",     sc:{}},
+      {l:"Moderate — some pressures but coping",v:"mod",     sc:{psy:1}},
+      {l:"High — regularly stressed",           v:"high",    sc:{psy:2}},
+      {l:"Extremely high — overwhelmed",        v:"extreme", sc:{psy:3}}
+    ]
+  },
+  { s:5, id:"perf_anxiety", q:"Do you experience performance anxiety specifically around sexual activity?",
+    hint:"Worrying about erections before or during sex counts.",
+    type:"single",
+    opts:[
+      {l:"No, I don't notice anxiety",        v:"none",  sc:{}},
+      {l:"Occasionally",                      v:"occ",   sc:{psy:1}},
+      {l:"Often",                             v:"often", sc:{psy:2}},
+      {l:"Almost always — it's a major factor",v:"always",sc:{psy:4}}
+    ]
+  },
+  { s:5, id:"relationship", q:"How would you describe your current relationship or sexual situation?",
+    hint:"",
+    type:"single",
+    opts:[
+      {l:"Single and not currently sexually active",      v:"single_off", sc:{}},
+      {l:"Single and sexually active (casual or dating)", v:"single_on",  sc:{psy:1}},
+      {l:"In a relationship — satisfied and supported",   v:"rel_good",   sc:{}},
+      {l:"In a relationship — experiencing difficulties", v:"rel_diff",   sc:{psy:3}}
+    ]
+  }
+];
+
+/* ── State ───────────────────────────────── */
+let cur = 0;
+const A = {};   // answers: id → value
+
+/* ── Scoring ─────────────────────────────── */
+function score() {
+  // IIEF-5
+  let iief = 0;
+  ["iief1","iief2","iief3","iief4","iief5"].forEach(id => { if (A[id] !== undefined) iief += +A[id]; });
+
+  let sev, sevCls;
+  if      (iief <=  7) { sev = "Severe ED";             sevCls = "sev-severe"; }
+  else if (iief <= 11) { sev = "Moderate ED";           sevCls = "sev-moderate"; }
+  else if (iief <= 16) { sev = "Mild-to-Moderate ED";   sevCls = "sev-mild-mod"; }
+  else if (iief <= 21) { sev = "Mild ED";               sevCls = "sev-mild"; }
+  else                 { sev = "No ED Detected";        sevCls = "sev-none"; }
+
+  // Type scores
+  const T = {psy:0, vas:0, hor:0, neu:0, med:0};
+
+  QS.forEach(q => {
+    const ans = A[q.id];
+    if (ans === undefined) return;
+    const vals = Array.isArray(ans) ? ans : [ans];
+    vals.forEach(v => {
+      const o = q.opts.find(o => String(o.v) === String(v));
+      if (o && o.sc) Object.keys(o.sc).forEach(k => { T[k] = (T[k]||0) + o.sc[k]; });
+    });
+  });
+
+  // Determine primary type
+  const keys = ["psy","vas","hor","neu"];
+  const mx = Math.max(...keys.map(k => T[k]));
+  const top = keys.filter(k => T[k] >= mx - 2 && T[k] > 0);
+
+  const names = {psy:"Psychogenic / Performance Anxiety", vas:"Vasculogenic (Blood Flow)", hor:"Hormonal / Testosterone", neu:"Neurogenic (Nerve-Related)"};
+  const descs = {
+    psy: "Your pattern strongly suggests psychogenic ED — where psychological factors (anxiety, stress, or relationship dynamics) are the primary driver. This is highly treatable, often without medication, through the right combination of support.",
+    vas: "Your profile points to vasculogenic ED — related to blood flow and cardiovascular health. This is the most common physical cause over 40 and is closely linked to metabolic risk factors. Lifestyle changes and targeted medical treatment are highly effective.",
+    hor: "Your results suggest a hormonal component — potentially low testosterone or another endocrine factor. Hormonal ED often presents alongside reduced libido and fatigue. A blood test is the key diagnostic next step.",
+    neu: "Your responses indicate a possible neurogenic component — where nerve function may be impaired. This can relate to diabetes, previous surgery, or neurological conditions. Specialist assessment is recommended.",
+    med: "Medication side effects appear to be a significant contributor. Many common prescriptions can affect erectile function, and a clinician can often make simple adjustments that dramatically improve outcomes."
+  };
+
+  let type, desc;
+  if (mx === 0) {
+    type = "Profile Inconclusive";
+    desc = "We were unable to strongly identify a specific ED type from your responses. A clinician consultation would provide a more thorough assessment.";
+  } else if (top.length === 1) {
+    type = names[top[0]];
+    desc = descs[top[0]];
+  } else {
+    type = "Mixed ED — " + top.map(k => names[k].split(" ")[0]).join(" + ");
+    desc = "Your results indicate multiple contributing factors, which is the most common presentation. Addressing each component gives the best long-term outcomes — a comprehensive approach is recommended.";
+  }
+  if (T.med > 1) desc += " Medication side effects also appear relevant and should be reviewed with a clinician.";
+
+  return {iief, sev, sevCls, T, type, desc};
+}
+
+function lvl(v, mx) {
+  const p = v / mx;
+  if (p >= 0.6)  return "High indicator";
+  if (p >= 0.35) return "Moderate indicator";
+  if (p >= 0.12) return "Low indicator";
+  return "Minimal / absent";
+}
+
+/* ── Render question ─────────────────────── */
+function render() {
+  const q   = QS[cur];
+  const ans = A[q.id];
+  const multi = q.type === "multi";
+
+  document.getElementById("qSection").textContent  = SECTIONS[q.s];
+  document.getElementById("qCounter").textContent  = `Question ${cur+1} of ${QS.length}`;
+  document.getElementById("qProgress").style.width = `${((cur+1)/QS.length)*100}%`;
+
+  const back = document.getElementById("btnBack");
+  const next = document.getElementById("btnNext");
+  back.style.display = cur > 0 ? "block" : "none";
+  next.disabled = ans === undefined || (Array.isArray(ans) && ans.length === 0);
+  next.textContent = cur === QS.length - 1 ? "See My Results →" : "Continue →";
+
+  let optsHtml = "";
+  q.opts.forEach(o => {
+    const selected = multi
+      ? (Array.isArray(ans) && ans.includes(o.v))
+      : (String(ans) === String(o.v));
+    optsHtml += `<div class="opt${selected?" sel":""}" onclick="pick(${JSON.stringify(q.id)},${JSON.stringify(o.v)},${multi})">
+      <div class="opt-radio"></div><span>${o.l}</span>
+    </div>`;
+  });
+
+  document.getElementById("qBody").innerHTML = `
+    <p class="q-text">${q.q}</p>
+    ${q.hint ? `<p class="q-hint">${q.hint}</p>` : ""}
+    <div class="opts${multi?" multi":""}">${optsHtml}</div>
+    ${multi ? '<p class="q-note">Select all that apply.</p>' : ""}
+  `;
+}
+
+/* ── Pick answer ─────────────────────────── */
+function pick(id, val, multi) {
+  if (multi) {
+    const q = QS.find(q => q.id === id);
+    let cur = Array.isArray(A[id]) ? [...A[id]] : [];
+    const opt = q.opts.find(o => o.v === val);
+
+    if (opt && opt.ex) {
+      cur = [val];
+    } else {
+      cur = cur.filter(v => { const o = q.opts.find(o => o.v === v); return !(o && o.ex); });
+      if (cur.includes(val)) cur = cur.filter(v => v !== val);
+      else cur.push(val);
+    }
+    A[id] = cur;
+  } else {
+    A[id] = val;
+  }
+  render();
+}
+
+/* ── Navigation ──────────────────────────── */
+function goNext() {
+  if (cur < QS.length - 1) { cur++; render(); scrollToQuiz(); }
+  else showResults();
+}
+function goBack() {
+  if (cur > 0) { cur--; render(); scrollToQuiz(); }
+}
+function scrollToQuiz() {
+  document.getElementById("quizShell").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* ── Results ─────────────────────────────── */
+function showResults() {
+  const {iief, sev, sevCls, T, type, desc} = score();
+
+  const shell = document.getElementById("quizShell");
+  shell.innerHTML = `
+    <div class="quiz-progress"><div class="quiz-progress-fill" style="width:100%"></div></div>
+    <div class="quiz-topbar">
+      <span class="quiz-section-lbl">Your Results</span>
+      <span class="quiz-counter">Assessment Complete</span>
+    </div>
+    <div class="results-body fade-up">
+      <div class="results-top">
+        <div class="sev-pill ${sevCls}">
+          <span>${sev}</span>
+          <span style="opacity:.6">|</span>
+          <span>IIEF-5: ${iief}/25</span>
+        </div>
+        <h2>${type}</h2>
+        <p>${desc}</p>
+      </div>
+
+      <div class="factor-grid">
+        <div class="factor-card">
+          <div class="factor-label">Psychogenic / Anxiety</div>
+          <div class="factor-val">${lvl(T.psy,20)}</div>
+          <div class="fbar"><div class="fbar-fill fb-gold" id="fb-psy" data-w="${Math.min(100,(T.psy/20)*100)}"></div></div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-label">Vasculogenic / Blood Flow</div>
+          <div class="factor-val">${lvl(T.vas,18)}</div>
+          <div class="fbar"><div class="fbar-fill fb-red" id="fb-vas" data-w="${Math.min(100,(T.vas/18)*100)}"></div></div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-label">Hormonal / Testosterone</div>
+          <div class="factor-val">${lvl(T.hor,12)}</div>
+          <div class="fbar"><div class="fbar-fill fb-blue" id="fb-hor" data-w="${Math.min(100,(T.hor/12)*100)}"></div></div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-label">Neurogenic / Nerve</div>
+          <div class="factor-val">${lvl(T.neu,9)}</div>
+          <div class="fbar"><div class="fbar-fill fb-green" id="fb-neu" data-w="${Math.min(100,(T.neu/9)*100)}"></div></div>
+        </div>
+      </div>
+
+      <!-- Email capture before CTA — feeds into MailerLite (STEP 4) -->
+      <div class="results-cta-box" id="resultsCtaBox">
+        <h3>Get your results by email</h3>
+        <p>Enter your email to receive a copy of your ED profile and personalised next steps. We'll never share it.</p>
+        <form id="captureForm" onsubmit="submitCapture(event)" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px">
+          <input type="email" id="captureEmail" placeholder="your@email.com" required
+            style="flex:1;min-width:220px;max-width:300px;padding:12px 18px;border-radius:999px;border:1.5px solid var(--border);background:var(--bg-card);color:var(--white);font-size:0.9rem;outline:none">
+          <button type="submit" class="btn-gold" style="padding:12px 26px;font-size:0.9rem">Send My Results →</button>
+        </form>
+        <p id="captureSuccess" style="display:none;color:var(--green);font-size:0.88rem;margin-bottom:14px">
+          ✓ Results sent — check your inbox.
+        </p>
+        <p style="font-size:0.78rem;color:var(--muted)">Or skip and go straight to booking.</p>
+        <div class="btns" style="margin-top:16px">
+          <!-- STEP 4b: Replace with your Calendly link for free 15-min intro call -->
+          <a href="https://calendly.com/REPLACE_YOUR_CALENDLY/intro" class="btn-gold" target="_blank" rel="noopener">Book Free Intro Call →</a>
+          <a href="#pricing" class="btn-retake" style="display:inline-flex;align-items:center;padding:11px 24px">View All Plans</a>
+          <button class="btn-retake" onclick="retake()">Retake Assessment</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Animate bars after paint
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      ["psy","vas","hor","neu"].forEach(k => {
+        const el = document.getElementById(`fb-${k}`);
+        if (el) el.style.width = el.dataset.w + "%";
+      });
+    }, 80);
+  });
+
+  scrollToQuiz();
+}
+
+/* ── Retake ──────────────────────────────── */
+function retake() {
+  cur = 0;
+  Object.keys(A).forEach(k => delete A[k]);
+  document.getElementById("quizShell").innerHTML = `
+    <div class="quiz-progress"><div class="quiz-progress-fill" id="qProgress" style="width:5%"></div></div>
+    <div class="quiz-topbar">
+      <span class="quiz-section-lbl" id="qSection">About You</span>
+      <span class="quiz-counter" id="qCounter">Question 1 of ${QS.length}</span>
+    </div>
+    <div class="quiz-body" id="qBody"></div>
+    <div class="quiz-foot" id="qFoot">
+      <button class="btn-back" id="btnBack" onclick="goBack()" style="display:none">← Back</button>
+      <button class="btn-next" id="btnNext" onclick="goNext()" disabled>Continue →</button>
+    </div>
+  `;
+  render();
+}
+
+/* ── Email capture → MailerLite ──────────── */
+// STEP 4: Replace REPLACE_ML_FORM_ID with your MailerLite embedded form ID
+// Find it: MailerLite → Forms → Embedded → Copy the data-account value
+const ML_GROUP_ID = "REPLACE_ML_GROUP_ID";   // MailerLite group/list ID
+const ML_API_URL  = "https://api.mailerlite.com/api/v2/subscribers";
+// NOTE: For a static site, use MailerLite's JS Embed or their public form endpoint.
+// The simplest approach: embed their hosted form via the submitCapture function below,
+// or use their public subscriber API with your API key set as an env var in Netlify.
+
+function submitCapture(e) {
+  e.preventDefault();
+  const email = document.getElementById("captureEmail").value.trim();
+  if (!email) return;
+
+  // Grab current results to attach as subscriber fields
+  const {iief, sev, type} = score();
+
+  // MailerLite public form POST (replace with your actual embed action URL)
+  // Get this from: MailerLite → Forms → Embedded → copy form action URL
+  const ML_FORM_ACTION = "https://assets.mailerlite.com/jsonp/REPLACE/forms/REPLACE/subscribe";
+
+  const body = new FormData();
+  body.append("fields[email]", email);
+  body.append("fields[ed_severity]", sev);
+  body.append("fields[ed_type]", type);
+  body.append("fields[iief_score]", String(iief));
+  body.append("ml-submit", "1");
+  body.append("anticsrf", "true");
+
+  fetch(ML_FORM_ACTION, { method: "POST", body, mode: "no-cors" })
+    .then(() => {
+      document.getElementById("captureForm").style.display = "none";
+      document.getElementById("captureSuccess").style.display = "block";
+    })
+    .catch(() => {
+      // no-cors means we can't read the response — assume success
+      document.getElementById("captureForm").style.display = "none";
+      document.getElementById("captureSuccess").style.display = "block";
+    });
+}
+
+/* ── FAQ toggle ──────────────────────────── */
+function toggleFaq(el) { el.parentElement.classList.toggle("open"); }
+
+/* ── Init ────────────────────────────────── */
+document.getElementById("fyear").textContent = new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
